@@ -14,27 +14,32 @@ function isNull(value) {
  * @author Frank Asante <me@frankasante.com>
  * 
  * @summary Creates a wave animation on an exisitng SVG path.
- * @param {HTMLElement} parent_container - Parent node of SVG element.
- * @param {HTMLElement} wave_path - Path node of SVG element.
+ * @param {String} parent_container_selector - Parent node of SVG element.
+ * @param {String} wave_path_selector - Path node of SVG element.
  * @param {Number} wave_speed - Speed of the wave animation.
- * @param {Number} wave_height - Position from the top of parent_container.
+ * @param {Number} wave_height - Position from the top of parent_container_selector.
  * @param {Number} wave_delta - Wave amplitude.
  * @param {Number} wave_points - The number of points used to compute our wave.
 
  * @return {void}
 */
-function setWave(parent_container, wave_path, wave_speed = 0.5, wave_height = 75, wave_delta = 20, wave_points = 6) {
-	if ( isNull(parent_container) ) {
+function setWave(parent_container_selector, wave_path_selector, wave_speed = 0.5, wave_points = 6, wave_height = 75, wave_delta = 20) {
+	const parentContainer = document.querySelector(parent_container_selector);
+	const wave = document.querySelector(wave_path_selector);
+
+	if ( isNull(parentContainer) ) {
 		console.warn('Parent container is null or undefined.');
+		return;
 		
-	}else if( isNull(wave_path) ) {
+	}else if( isNull(wave) ) {
 		console.warn('Wave path is null or undefined.');
+		return
 	}
 
 	const container = document.body;
 	const width = container.offsetWidth;
-	const height = parent_container.offsetHeight + 4;
-	const wave = wave_path;
+	// const height = parentContainer.offsetHeight + 4;
+	const height = parentContainer.offsetHeight;
 	
 	const waveWidth = container.offsetWidth;  // Wave SVG width (usually container width)
 	const waveHeight = wave_height;                   // Position from the top of container
@@ -112,5 +117,9 @@ function setWave(parent_container, wave_path, wave_speed = 0.5, wave_height = 75
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-	setWave(document.getElementById('footer-container'), document.getElementById('footer-wave-path'));
+	setWave('#header-wave-container', '#header-wave-path', 0.2, 3, 30);
+	
+	setWave('#header-2-wave-container', '#header-2-wave-path', 0.2, 3, 30);
+	
+	setWave('#footer-container', '#footer-wave-path', 0.3, 3);
 });
