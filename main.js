@@ -146,10 +146,4 @@ window.addEventListener('DOMContentLoaded', () => {
 	*/
 	
 	setWave('.header-animation-wrapper', 0.2, 3, 30);
-
-	// setWave('#header-wave-container', '#header-wave-path', 0.2, 3, 30);
-	
-	// setWave('#header-2-wave-container', '#header-2-wave-path', 0.2, 3, 30);
-	
-	// setWave('#footer-container', '#footer-wave-path', 0.3, 3);
 });
