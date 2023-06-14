@@ -117,6 +117,14 @@ function setWave(parent_container_selector, wave_path_selector, wave_speed = 0.5
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+	/* 
+		A function was created based off another piece of code to make this easier.
+		See the function above for more details.
+
+		You may change the parameters to your liking.
+		I hope the documentation is clear enough. :D
+	*/
+
 	setWave('#header-wave-container', '#header-wave-path', 0.2, 3, 30);
 	
 	setWave('#header-2-wave-container', '#header-2-wave-path', 0.2, 3, 30);
